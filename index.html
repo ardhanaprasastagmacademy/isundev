@@ -37,16 +37,14 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0B1F33">
 
-  <!-- Preload Critical Hero Image (LCP Element) -->
+  <!-- Preload Critical Assets -->
   <link rel="preload" as="image" href="assets/img/about/about-square-18.webp" type="image/webp" fetchpriority="high">
-
-  <!-- Preload Critical CSS -->
   <link rel="preload" href="assets/vendor/bootstrap/css/bootstrap.min.css" as="style">
-  <link rel="preload" href="assets/css/main.css" as="style">
+  <link rel="preload" href="assets/css/main.min.css" as="style">
 
   <!-- Core Critical Stylesheets -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/main.min.css" rel="stylesheet">
 
   <!-- Google Fonts (Non-blocking) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,14 +61,6 @@
   <link rel="preload" href="assets/vendor/aos/aos.css" as="style">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="assets/vendor/aos/aos.css"></noscript>
-
-  <link rel="preload" href="assets/vendor/glightbox/css/glightbox.min.css" as="style">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="assets/vendor/glightbox/css/glightbox.min.css"></noscript>
-
-  <link rel="preload" href="assets/vendor/swiper/swiper-bundle.min.css" as="style">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css"></noscript>
 
   <!-- JSON-LD Structured Data (SEO, GEO & AEO Optimized) -->
   <script type="application/ld+json">
@@ -605,7 +595,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="review-card">
               <div class="review-header">
-                <div class="review-stars" aria-label="Rating 5 dari 5 bintang">
+                <div class="review-stars" role="img" aria-label="Rating 5 dari 5 bintang">
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
@@ -631,7 +621,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="review-card">
               <div class="review-header">
-                <div class="review-stars" aria-label="Rating 5 dari 5 bintang">
+                <div class="review-stars" role="img" aria-label="Rating 5 dari 5 bintang">
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
@@ -657,7 +647,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="review-card">
               <div class="review-header">
-                <div class="review-stars" aria-label="Rating 5 dari 5 bintang">
+                <div class="review-stars" role="img" aria-label="Rating 5 dari 5 bintang">
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
@@ -908,10 +898,6 @@
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
   <script src="assets/vendor/aos/aos.js" defer></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js" defer></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js" defer></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js" defer></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js" defer></script>

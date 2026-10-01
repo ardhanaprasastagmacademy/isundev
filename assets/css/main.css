@@ -23,7 +23,7 @@
   --heading-color: #0B1F33;        /* Deep Navy */
   --accent-color: #0B1F33;         /* Deep Navy primary */
   --color-accent-beige: #D8C7A3;   /* Warm Beige accent */
-  --color-text-muted: #6B7280;     /* Muted text */
+  --color-text-muted: #4B5563;     /* Muted text (WCAG AAA compliant contrast) */
   --surface-color: #ffffff;        /* Card / White */
   --contrast-color: #ffffff;       /* Contrast on dark */
   --color-border: #E6E0D5;         /* Subtle border */
