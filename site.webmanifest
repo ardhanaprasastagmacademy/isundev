@@ -3,14 +3,16 @@
   "short_name": "IsenDev",
   "icons": [
     {
-      "src": "/assets/img/logo/favicon.jpg",
+      "src": "/assets/img/logo/icon-192.png",
       "sizes": "192x192",
-      "type": "image/jpeg"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "/assets/img/logo/apple-touch-icon.jpg",
+      "src": "/assets/img/logo/icon-512.png",
       "sizes": "512x512",
-      "type": "image/jpeg"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "theme_color": "#0B1F33",
