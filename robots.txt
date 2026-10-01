@@ -1,0 +1,72 @@
+# ==============================================================================
+# IsenDev Banyuwangi - robots.txt
+# Optimized for Web Search, Local SEO, and AI Search / AEO Crawlers
+# ==============================================================================
+
+# Default rule for all search engine bots
+User-agent: *
+Allow: /
+
+# OpenAI (ChatGPT, ChatGPT Search, SearchGPT)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Google (Google Search, Gemini, AI Overviews, SGE)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI (Perplexity Search Engine)
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic (Claude, Claude Search)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Microsoft (Bing, Bing Copilot)
+User-agent: Bingbot
+Allow: /
+
+# Apple (Siri, Spotlight, Apple Intelligence)
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta (Meta AI, LLaMA)
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Other Leading AI Agents & Open Crawlers
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+# ==============================================================================
+# XML Sitemap
+# ==============================================================================
+Sitemap: https://isendev.com/sitemap.xml
