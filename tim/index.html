@@ -366,7 +366,7 @@
             </p>
             <p class="mb-0 d-flex align-items-start gap-2">
               <i class="bi bi-clock text-primary mt-1"></i>
-              <span>Setiap Hari: 08.00 – 21.00 WIB</span>
+              <span>Setiap Hari: 08.00 Ã¢â‚¬â€œ 21.00 WIB</span>
             </p>
           </div>
           <div class="footer-social-links d-flex gap-2">
@@ -390,11 +390,38 @@
     </div>
   </footer>
 
-  <!-- Floating WhatsApp -->
-  <a href="https://wa.me/6282232730246?text=Halo%20IsenDev,%20saya%20ingin%20berkonsultasi%20mengenai%20pembuatan%20website%20untuk%20bisnis%20saya." class="whatsapp-floating" target="_blank" rel="noopener noreferrer" aria-label="Konsultasi WhatsApp">
-    <i class="bi bi-whatsapp"></i>
-    <span>Konsultasi WhatsApp</span>
-  </a>
+  <!-- Floating WhatsApp Widget -->
+  <div class="wa-widget" id="waWidget">
+    <div class="wa-popup" id="waPopup">
+      <div class="wa-popup-header">
+        <div class="wa-popup-header-content">
+          <img src="../assets/img/logo/whatsapp-logo.svg" alt="WhatsApp" class="wa-popup-logo" width="40" height="40">
+          <div>
+            <div class="wa-popup-title">IsenDev</div>
+            <div class="wa-popup-subtitle">Biasanya membalas dalam beberapa menit</div>
+          </div>
+        </div>
+        <button class="wa-popup-close" id="waPopupClose" aria-label="Tutup popup WhatsApp">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="wa-popup-body">
+        <div class="wa-popup-bubble">
+          Halo! &#128075; Ada yang bisa kami bantu soal pembuatan website? Silakan chat langsung di sini.
+        </div>
+      </div>
+      <div class="wa-popup-footer">
+        <a href="https://wa.me/6282232730246?text=Halo%20IsenDev,%20saya%20ingin%20berkonsultasi%20mengenai%20pembuatan%20website%20untuk%20bisnis%20saya." target="_blank" rel="noopener noreferrer" class="wa-popup-cta">
+          <i class="bi bi-whatsapp"></i>
+          <span>Mulai Chat</span>
+        </a>
+      </div>
+    </div>
+    <button class="wa-fab" id="waFab" aria-label="Buka WhatsApp Chat">
+      <img src="../assets/img/logo/whatsapp-logo.svg" alt="WhatsApp" width="28" height="28" class="wa-fab-logo">
+      <i class="bi bi-x-lg wa-fab-close-icon"></i>
+    </button>
+  </div>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" aria-label="Kembali ke atas"><i class="bi bi-arrow-up-short"></i></a>

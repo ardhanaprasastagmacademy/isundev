@@ -142,7 +142,7 @@
               </div>
               <div class="p-4 flex-grow-1 d-flex flex-column justify-content-between">
                 <div>
-                  <div class="small text-muted mb-2">Company Profile • Banyuwangi</div>
+                  <div class="small text-muted mb-2">Company Profile â€¢ Banyuwangi</div>
                   <h2 class="h5 fw-bold mb-2"><a href="website-kopi-banyuwangi/" class="text-dark">Ijen Specialty Coffee</a></h2>
                   <p class="small text-muted">Website profil produsen kopi lereng Gunung Ijen untuk memperluas pasar B2B dan ekspor dengan navigasi elegan dan katalog produk interaktif.</p>
                 </div>
@@ -161,7 +161,7 @@
               </div>
               <div class="p-4 flex-grow-1 d-flex flex-column justify-content-between">
                 <div>
-                  <div class="small text-muted mb-2">Landing Page • Banyuwangi</div>
+                  <div class="small text-muted mb-2">Landing Page â€¢ Banyuwangi</div>
                   <h2 class="h5 fw-bold mb-2"><a href="../layanan/landing-page/" class="text-dark">Osing Explore Tour</a></h2>
                   <p class="small text-muted">Landing page pemesanan paket wisata Kawah Ijen, Baluran, dan Pulau Merah dengan tombol konversi langsung ke WhatsApp agen wisata.</p>
                 </div>
@@ -180,7 +180,7 @@
               </div>
               <div class="p-4 flex-grow-1 d-flex flex-column justify-content-between">
                 <div>
-                  <div class="small text-muted mb-2">Website UMKM • Rogojampi, Banyuwangi</div>
+                  <div class="small text-muted mb-2">Website UMKM â€¢ Rogojampi, Banyuwangi</div>
                   <h2 class="h5 fw-bold mb-2"><a href="../layanan/website-umkm/" class="text-dark">Bambu Arts Gintangan</a></h2>
                   <p class="small text-muted">Katalog online produk kerajinan anyaman bambu khas Desa Gintangan Banyuwangi untuk meningkatkan pesanan dari berbagai kota di Indonesia.</p>
                 </div>
@@ -278,7 +278,7 @@
             </p>
             <p class="mb-0 d-flex align-items-start gap-2">
               <i class="bi bi-clock text-primary mt-1"></i>
-              <span>Setiap Hari: 08.00 – 21.00 WIB</span>
+              <span>Setiap Hari: 08.00 â€“ 21.00 WIB</span>
             </p>
           </div>
           <div class="footer-social-links d-flex gap-2">
@@ -302,10 +302,38 @@
     </div>
   </footer>
 
-  <!-- Floating WhatsApp Action -->
-  <a href="https://wa.me/6282232730246?text=Halo%20IsenDev,%20saya%20ingin%20berkonsultasi%20mengenai%20pembuatan%20website%20untuk%20bisnis%20saya." class="whatsapp-floating" target="_blank" rel="noopener noreferrer" aria-label="Konsultasi WhatsApp">
-    <i class="bi bi-whatsapp"></i>
-  </a>
+  <!-- Floating WhatsApp Widget -->
+  <div class="wa-widget" id="waWidget">
+    <div class="wa-popup" id="waPopup">
+      <div class="wa-popup-header">
+        <div class="wa-popup-header-content">
+          <img src="../assets/img/logo/whatsapp-logo.svg" alt="WhatsApp" class="wa-popup-logo" width="40" height="40">
+          <div>
+            <div class="wa-popup-title">IsenDev</div>
+            <div class="wa-popup-subtitle">Biasanya membalas dalam beberapa menit</div>
+          </div>
+        </div>
+        <button class="wa-popup-close" id="waPopupClose" aria-label="Tutup popup WhatsApp">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="wa-popup-body">
+        <div class="wa-popup-bubble">
+          Halo! &#128075; Ada yang bisa kami bantu soal pembuatan website? Silakan chat langsung di sini.
+        </div>
+      </div>
+      <div class="wa-popup-footer">
+        <a href="https://wa.me/6282232730246?text=Halo%20IsenDev,%20saya%20ingin%20berkonsultasi%20mengenai%20pembuatan%20website%20untuk%20bisnis%20saya." target="_blank" rel="noopener noreferrer" class="wa-popup-cta">
+          <i class="bi bi-whatsapp"></i>
+          <span>Mulai Chat</span>
+        </a>
+      </div>
+    </div>
+    <button class="wa-fab" id="waFab" aria-label="Buka WhatsApp Chat">
+      <img src="../assets/img/logo/whatsapp-logo.svg" alt="WhatsApp" width="28" height="28" class="wa-fab-logo">
+      <i class="bi bi-x-lg wa-fab-close-icon"></i>
+    </button>
+  </div>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" aria-label="Kembali ke atas"><i class="bi bi-arrow-up-short"></i></a>

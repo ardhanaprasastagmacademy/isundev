@@ -235,4 +235,29 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  /**
+   * WhatsApp Widget toggle
+   */
+  const waWidget = document.getElementById('waWidget');
+  const waFab = document.getElementById('waFab');
+  const waPopupClose = document.getElementById('waPopupClose');
+
+  if (waFab && waWidget) {
+    waFab.addEventListener('click', function() {
+      waWidget.classList.toggle('open');
+    });
+  }
+
+  if (waPopupClose && waWidget) {
+    waPopupClose.addEventListener('click', function() {
+      waWidget.classList.remove('open');
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    if (waWidget && waWidget.classList.contains('open') && !waWidget.contains(e.target)) {
+      waWidget.classList.remove('open');
+    }
+  });
+
 })();
