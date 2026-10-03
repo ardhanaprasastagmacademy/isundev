@@ -63,39 +63,36 @@
 
 /* Custom Modern Scrollbar */
 html {
-  scrollbar-width: thin;
-  scrollbar-color: #0B1F33 #F1F5F9;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scrollbar-color: #94A3B8 #F1F5F9;
 }
 
 ::-webkit-scrollbar {
-  width: 9px;
-  height: 9px;
+  width: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F7F4ED;
+  background: #F1F5F9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C4CCD4;
-  border-radius: 8px;
-  border: 2px solid #F7F4ED;
+  background: #94A3B8;
+  border-radius: 6px;
+  border: 3px solid #F1F5F9;
 }
 
-::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
   background: #0B1F33;
 }
-
-/* Smooth scroll */
-:root {
-  scroll-behavior: smooth;
-}
-
 
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
 body {
+  overflow-x: hidden;
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
@@ -352,6 +349,8 @@ h6 {
     margin-right: 10px;
     cursor: pointer;
     transition: all 0.3s;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .mobile-nav-toggle:hover {
@@ -368,13 +367,15 @@ h6 {
     list-style: none;
     position: absolute;
     inset: 60px 0 0 0;
-    padding: 30px 24px;
+    padding: 24px 24px 120px 24px;
     margin: 0;
     border-radius: 0;
     background-color: var(--nav-mobile-background-color);
     border: none;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
     transition: 0.3s ease;
     z-index: 9998;
   }
@@ -382,17 +383,19 @@ h6 {
   .navmenu a,
   .navmenu a:focus {
     color: var(--nav-dropdown-color);
-    padding: 16px 0;
+    padding: 14px 0;
     font-family: var(--nav-font);
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 17px;
+    font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: space-between;
     white-space: nowrap;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
     position: relative;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(11, 31, 51, 0.08);
   }
 
   .navmenu a::before,
@@ -409,20 +412,16 @@ h6 {
 
   .navmenu a i,
   .navmenu a:focus i {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 0;
     margin-left: 5px;
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
-  }
-
-  .navmenu a i:hover,
-  .navmenu a:focus i:hover {
-    color: var(--accent-color);
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
   }
 
   .navmenu a:hover {
@@ -443,8 +442,7 @@ h6 {
     width: 40px;
   }
 
-  .navmenu .active i,
-  .navmenu .active:focus i {
+  .navmenu .dropdown.active > a i {
     color: var(--accent-color);
     transform: rotate(180deg);
   }
@@ -453,27 +451,24 @@ h6 {
     position: static;
     display: none;
     z-index: 99;
-    padding: 10px 0 10px 20px;
+    padding: 6px 0 6px 18px;
     margin: 0;
-    background: transparent;
-    border-left: 2px solid color-mix(in srgb, var(--accent-color), transparent 70%);
-    transition: all 0.3s ease-in-out;
+    background: #F8FAFC;
+    border-left: 3px solid #0B1F33;
+    border-radius: 6px;
+    transition: all 0.25s ease-in-out;
     box-shadow: none;
     inset: unset;
   }
 
   .navmenu .dropdown ul a {
-    padding: 12px 0;
-    font-size: 16px;
+    padding: 10px 0;
+    font-size: 15px;
+    font-weight: 400;
     border-bottom-color: color-mix(in srgb, var(--default-color), transparent 95%);
   }
 
-  .navmenu .dropdown ul ul {
-    padding-left: 16px;
-    border-left-color: color-mix(in srgb, var(--accent-color), transparent 80%);
-  }
-
-  .navmenu .dropdown>.dropdown-active {
+  .navmenu .dropdown > .dropdown-active {
     display: block;
   }
 
@@ -483,25 +478,25 @@ h6 {
 
   .mobile-nav-active .mobile-nav-toggle {
     color: #fff;
-    position: absolute;
+    position: fixed;
     font-size: 32px;
     top: 14px;
     right: 20px;
     margin-right: 0;
-    z-index: 9999;
+    z-index: 99999;
   }
 
   .mobile-nav-active .navmenu {
     position: fixed;
-    overflow: hidden;
     inset: 0;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 99990;
     transition: 0.3s ease;
   }
 
-  .mobile-nav-active .navmenu>ul {
+  .mobile-nav-active .navmenu > ul {
     display: block;
-    max-height: 100vh;
+    max-height: calc(100vh - 60px);
   }
 }
 
@@ -678,6 +673,7 @@ h6 {
   flex-direction: column;
   align-items: flex-end;
   gap: 14px;
+  pointer-events: none;
 }
 
 .wa-fab {
@@ -696,6 +692,7 @@ h6 {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   position: relative;
   flex-shrink: 0;
+  pointer-events: auto;
 }
 
 .wa-fab:hover {
@@ -2856,6 +2853,131 @@ section,
 }
 
 /* Accessibility Focus & Reduced Motion */
+
+/*--------------------------------------------------------------
+# Service Visual Showcase & Mockup Frame
+--------------------------------------------------------------*/
+.service-preview-wrapper {
+  position: relative;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 12px 36px rgba(11, 31, 51, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-preview-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 48px rgba(11, 31, 51, 0.12);
+}
+
+.service-browser-bar {
+  background: #0B1F33;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.service-browser-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.service-browser-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.service-browser-dot.dot-red { background: #EF4444; }
+.service-browser-dot.dot-yellow { background: #F59E0B; }
+.service-browser-dot.dot-green { background: #10B981; }
+
+.service-browser-address {
+  background: rgba(255, 255, 255, 0.1);
+  color: #E2E8F0;
+  font-size: 0.78rem;
+  padding: 4px 14px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-grow: 1;
+  max-width: 460px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.service-browser-address i {
+  font-size: 0.75rem;
+}
+
+.service-preview-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.service-preview-caption {
+  background: #FFFFFF;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.service-highlight-box {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.service-highlight-box:hover {
+  border-color: rgba(11, 31, 51, 0.25);
+  box-shadow: 0 4px 16px rgba(11, 31, 51, 0.05);
+}
+
+.service-highlight-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(11, 31, 51, 0.06);
+  color: #0B1F33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .service-browser-bar {
+    padding: 8px 12px;
+  }
+  .service-browser-address {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+  }
+  .service-preview-caption {
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .service-preview-caption .btn-isendev-primary {
+    width: 100%;
+    justify-content: center;
+  }
+}
 
 /*--------------------------------------------------------------
 # 404 Error Page

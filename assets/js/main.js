@@ -22,7 +22,7 @@
   window.addEventListener('load', toggleScrolled);
 
   /**
-   * Mobile nav toggle
+   * Mobile nav toggle & state handling
    */
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
@@ -31,7 +31,20 @@
     if (!body || !mobileNavToggleBtn) return;
     body.classList.toggle('mobile-nav-active');
     mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
+    mobileNavToggleBtn.classList.toggle('bi-x-lg');
+  }
+
+  function closeMobileNav() {
+    const body = document.body;
+    if (body && body.classList.contains('mobile-nav-active')) {
+      body.classList.remove('mobile-nav-active');
+      body.style.overflow = '';
+      if (mobileNavToggleBtn) {
+        mobileNavToggleBtn.classList.add('bi-list');
+        mobileNavToggleBtn.classList.remove('bi-x-lg');
+        mobileNavToggleBtn.classList.remove('bi-x');
+      }
+    }
   }
 
   if (mobileNavToggleBtn) {
@@ -39,29 +52,81 @@
   }
 
   /**
-   * Hide mobile nav on same-page/hash links
+   * Close mobile nav on ANY link click (except dropdown parent toggle)
    */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.mobile-nav-active') && !navmenu.classList.contains('toggle-dropdown')) {
-        mobileNavToggle();
+  document.querySelectorAll('#navmenu a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      if (!document.body.classList.contains('mobile-nav-active')) return;
+
+      const isToggle = this.classList.contains('toggle-dropdown');
+      const isDropdownParent = this.parentElement &&
+        this.parentElement.classList.contains('dropdown') &&
+        this.parentElement.querySelector(':scope > ul') !== null;
+
+      if (isToggle || isDropdownParent) {
+        return;
+      }
+
+      const href = this.getAttribute('href');
+      if (href && href !== '#' && !href.startsWith('#')) {
+        e.preventDefault();
+        closeMobileNav();
+        setTimeout(function() {
+          window.location.href = href;
+        }, 50);
+      } else {
+        closeMobileNav();
       }
     });
   });
 
   /**
+   * Close mobile nav when clicking backdrop outside menu list
+   */
+  const navmenuEl = document.querySelector('#navmenu');
+  if (navmenuEl) {
+    navmenuEl.addEventListener('click', (e) => {
+      if (document.body.classList.contains('mobile-nav-active') && e.target === navmenuEl) {
+        closeMobileNav();
+      }
+    });
+  }
+
+  /**
+   * Close mobile nav with Escape key
+   */
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('mobile-nav-active')) {
+      closeMobileNav();
+    }
+  });
+
+  /**
+   * Automatically close mobile nav when resizing to desktop viewport
+   */
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1200 && document.body.classList.contains('mobile-nav-active')) {
+      closeMobileNav();
+    }
+  });
+
+  /**
    * Toggle mobile nav dropdowns
    */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      if (this.parentNode) {
-        this.parentNode.classList.toggle('active');
-        if (this.parentNode.nextElementSibling) {
-          this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+  document.querySelectorAll('.navmenu .dropdown > a').forEach(dropdownToggle => {
+    dropdownToggle.addEventListener('click', function(e) {
+      if (document.body.classList.contains('mobile-nav-active') || window.innerWidth < 1200) {
+        e.preventDefault();
+        const parentLi = this.closest('.dropdown');
+        if (parentLi) {
+          parentLi.classList.toggle('active');
+          const submenu = parentLi.querySelector('ul');
+          if (submenu) {
+            submenu.classList.toggle('dropdown-active');
+          }
         }
+        e.stopImmediatePropagation();
       }
-      e.stopImmediatePropagation();
     });
   });
 
@@ -87,10 +152,10 @@
   if (scrollTop) {
     scrollTop.addEventListener('click', (e) => {
       e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      e.stopPropagation();
+      document.body.style.overflow = '';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.documentElement.scrollTop = 0;
     });
     window.addEventListener('load', toggleScrollTop);
     document.addEventListener('scroll', toggleScrollTop);
