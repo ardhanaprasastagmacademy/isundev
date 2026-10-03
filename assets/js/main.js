@@ -36,9 +36,10 @@
 
   function closeMobileNav() {
     const body = document.body;
-    if (body && body.classList.contains('mobile-nav-active')) {
+    if (body) {
       body.classList.remove('mobile-nav-active');
       body.style.overflow = '';
+      document.documentElement.style.overflow = '';
       if (mobileNavToggleBtn) {
         mobileNavToggleBtn.classList.add('bi-list');
         mobileNavToggleBtn.classList.remove('bi-x-lg');
@@ -56,8 +57,6 @@
    */
   document.querySelectorAll('#navmenu a').forEach(link => {
     link.addEventListener('click', function(e) {
-      if (!document.body.classList.contains('mobile-nav-active')) return;
-
       const isToggle = this.classList.contains('toggle-dropdown');
       const isDropdownParent = this.parentElement &&
         this.parentElement.classList.contains('dropdown') &&
@@ -67,15 +66,17 @@
         return;
       }
 
-      const href = this.getAttribute('href');
-      if (href && href !== '#' && !href.startsWith('#')) {
+      if (document.body.classList.contains('mobile-nav-active')) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#' || href.startsWith('#')) {
+          closeMobileNav();
+          return;
+        }
+
         e.preventDefault();
+        const targetUrl = this.href;
         closeMobileNav();
-        setTimeout(function() {
-          window.location.href = href;
-        }, 50);
-      } else {
-        closeMobileNav();
+        window.location.assign(targetUrl);
       }
     });
   });
@@ -154,11 +155,11 @@
       e.preventDefault();
       e.stopPropagation();
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      document.documentElement.scrollTop = 0;
     });
     window.addEventListener('load', toggleScrollTop);
-    document.addEventListener('scroll', toggleScrollTop);
+    document.addEventListener('scroll', toggleScrollTop, { passive: true });
   }
 
   /**
